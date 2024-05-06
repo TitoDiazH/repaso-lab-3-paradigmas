@@ -42,15 +42,34 @@ console.log(greet("Pedro"));
 //Es mas complejo que python.
 const readline = require('node:readline'); //IMPORTANTE, esto importa el readline. Basicamente importas el input al codigo.
 
-const rl = readline.createInterface({ //IMPORTANTE TAMBIEN, rl va a ser la variable que nos deja recibir cosas de la consola
-    input: process.stdin,
-    output: process.stdout
-});
-
+//const rl = readline.createInterface({ //IMPORTANTE TAMBIEN, rl va a ser la variable que nos deja recibir cosas de la consola
+  //  input: process.stdin,
+    //output: process.stdout
+//});
+x
 rl.question('¿Cuál es tu nombre? ', (answer) => { //Esta linea seria como el input en python, excepto que lo que recibe solo se guarda en lo que este adentro de {}
     //Para preguntar mas cosas se tiene que hacer la misma linea de arriba pero con una variable diferente
     //Ej: rl.question('Ingrese su edad: ', (edad) => {});
     console.log(`Bienvenido: ${answer}`);
     rl.close(); //Una vez cerrado no se puede volver a usar, se tiene que abrir de nuevo.
 });
+
+
+//para hacer preguntas usar siguiente metodo:
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const input = (pregunta) => {
+    return new Promise((resolve) => {
+      rl.question(pregunta, (respuesta) => resolve(respuesta));
+    });
+  };
+
+// asi cada vez que se quiera hacer un input como en python se hace de la forma:
+
+//const nombre = input("Cual es tu nombre?");
 
